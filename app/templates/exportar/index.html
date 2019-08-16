@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Exportar{% endblock %}
+
+{% block content %}
+
+  <h1 class="text-center">Exportar</h1>
+
+  <div class="espacio"></div>
+
+  <div class="card card-primary contenedor">
+    <div class="card-header bg-primary">Exportar datos</div>
+      <div class="card-body">
+          <div class="card-block">
+            <form action="{% url 'manager_exportar_form' %}" method="POST" class="needs-validation" novalidate="novalidate" id="importarForm">
+              {% csrf_token %}
+              <fieldset>
+                <legend>Datos</legend>
+                <div class="form-group" name="form-group-directorio">
+                  <label>{{form.directorio.label}}</label>
+                  {{form.directorio}}
+                  <div class="invalid-feedback">
+                    El directorio es requerido
+                  </div>              
+                </div>
+               <div class="text-center">
+                  <p class="lead">
+                    <button type="submit" name="exportar" id="exportar" class="btn btn-primary boton-largo">Exportar</button>
+                  </p>
+                </div>                
+              </fieldset>
+            </form>
+          </div>
+    </div>
+  </div>
+
+{% endblock %}

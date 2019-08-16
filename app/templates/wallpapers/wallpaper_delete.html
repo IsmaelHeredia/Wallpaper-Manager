@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Borrar wallpaper{% endblock %}
+
+{% block content %}
+
+    <h1 class="text-center">Wallpapers</h1>
+
+    <div class="doble-espacio"></div>
+	
+	<div class="jumbotron">
+	  <form action="{% url 'manager_wallpaper_delete' wallpaper.id %}" method="POST">
+	  	{% csrf_token %}
+        <fieldset>
+            <div class="text-center">
+                <h1>Eliminacíon</h1>
+                <p class="lead">¿Estás seguro que deseas eliminar el wallpaper {{ wallpaper.nombre }} ?</p>
+                <p class="lead">
+                    <button type="submit" name="borrar_wallpaper" class="btn btn-danger boton-largo"><i class="fa fa-times espacio-icono" aria-hidden="true"></i>Borrar</button>
+                    <a href="{% url 'manager_wallpaper_list' %}" class="btn btn-primary boton-largo" role="button"><i class="fa fa-arrow-left espacio-icono" aria-hidden="true"></i>Volver</a>
+                </p>
+            </div>
+        </fieldset>
+	  </form>
+	</div>
+
+{% endblock %}
