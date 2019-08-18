@@ -31,11 +31,16 @@ def manager_wallpaper_view(request):
 
 def manager_wallpaper_edit(request,id_wallpaper):
     wallpaper = get_object_or_404(Wallpaper, id=id_wallpaper)
+    wallpaper_obj = Wallpaper.objects.get(id=id_wallpaper)
     if request.method == 'GET':
         form = WallpaperForm(instance=wallpaper)
     else:
-        form = WallpaperForm(request.POST,instance=wallpaper)
+        form = WallpaperForm(request.POST, request.FILES, instance=wallpaper)
         if form.is_valid():
+            wallpaper_actual = wallpaper_obj.imagen
+            wallpaper_nuevo = request.FILES["imagen"].name
+            if wallpaper_actual != wallpaper_nuevo:
+                os.remove(wallpaper_actual.path)
             form.save()
             message_text = "El wallpaper fue actualizado"
             messages.add_message(request, messages.SUCCESS,message_text)
@@ -51,6 +56,7 @@ def manager_wallpaper_delete(request,id_wallpaper):
     if request.method == 'POST':
         if 'borrar_wallpaper' in request.POST:
             fullpath = wallpaper.imagen.path
+            print(fullpath)
             os.remove(fullpath)
             wallpaper.delete()
             message_text = "El wallpaper fue borrado definitivamente"
