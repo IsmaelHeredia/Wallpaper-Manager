@@ -21,7 +21,7 @@ def manager_importar_form(request):
             if service.importar_datos(directorio):
                 message_text = "Los datos fueron importados exitosamente"
                 messages.add_message(request, messages.SUCCESS,message_text)
-                return redirect("manager_wallpaper_view")
+                return redirect("manager_wallpaper_list")
             else:
                 message_text = "Ha ocurrido un error en la importación"
                 messages.add_message(request, messages.WARNING,message_text)

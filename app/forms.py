@@ -59,7 +59,7 @@ class ImportarForm(forms.ModelForm):
         }
 
         widgets = {
-            'directorio' : forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese directorio','autocomplete':'off','autocorrect':'off','spellcheck':'false'}),
+            'directorio' : forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese directorio','autocomplete':'off','autocorrect':'off','spellcheck':'false','required':True}),
         }
 
 class ExportarForm(forms.ModelForm):
@@ -77,5 +77,5 @@ class ExportarForm(forms.ModelForm):
         }
 
         widgets = {
-            'directorio' : forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese directorio','autocomplete':'off','autocorrect':'off','spellcheck':'false'}),
+            'directorio' : forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese directorio','autocomplete':'off','autocorrect':'off','spellcheck':'false','required':True}),
         }
