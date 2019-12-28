@@ -31,11 +31,18 @@ def manager_wallpaper_view(request):
 
 def manager_wallpaper_edit(request,id_wallpaper):
     wallpaper = get_object_or_404(Wallpaper, id=id_wallpaper)
+    wallpaper_obj = Wallpaper.objects.get(id=id_wallpaper)
     if request.method == 'GET':
         form = WallpaperForm(instance=wallpaper)
     else:
-        form = WallpaperForm(request.POST,instance=wallpaper)
+        form = WallpaperForm(request.POST, request.FILES, instance=wallpaper)
         if form.is_valid():
+            if request.FILES.get("imagen", False):
+                fullpath = wallpaper_obj.imagen.path
+                try:
+                    os.remove(fullpath)
+                except:
+                    pass
             form.save()
             message_text = "El wallpaper fue actualizado"
             messages.add_message(request, messages.SUCCESS,message_text)
