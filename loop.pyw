@@ -13,12 +13,11 @@ db_name = "db.sqlite3"
 
 Y = 2000
 
-estaciones = [
-           ('Verano', (date(Y,  12, 21),  date(Y,  3, 20))),
-           ('Otoño', (date(Y,  3, 21),  date(Y, 6, 20))),
-           ('Invierno', (date(Y, 6, 21),  date(Y, 9, 20))),
-           ('Primavera', (date(Y,  9, 21),  date(Y,  12, 20)))
-          ]
+estaciones = [('Verano', (date(Y,  1,  1),  date(Y,  3, 20))),
+           ('Otoño', (date(Y,  3, 21),  date(Y,  6, 20))),
+           ('Invierno', (date(Y,  6, 21),  date(Y,  9, 20))),
+           ('Primavera', (date(Y,  9, 21),  date(Y, 12, 20))),
+           ('Verano', (date(Y, 12, 21),  date(Y, 12, 31)))]
 
 class Wallpaper:
   id = ""

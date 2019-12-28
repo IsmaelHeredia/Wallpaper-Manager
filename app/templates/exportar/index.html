@@ -12,7 +12,7 @@
     <div class="card-header bg-primary">Exportar datos</div>
       <div class="card-body">
           <div class="card-block">
-            <form action="{% url 'manager_exportar_form' %}" method="POST" id="importarForm">
+            <form action="{% url 'manager_exportar_form' %}" method="POST" class="needs-validation" novalidate="novalidate" id="importarForm">
               {% csrf_token %}
               <fieldset>
                 <legend>Datos</legend>
